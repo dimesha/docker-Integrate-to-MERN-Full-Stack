@@ -33,7 +33,7 @@ app.post('/api/notes', async(req, res) => {
         })
         const saveNote = await newNote.save();
         res.status(201).json({message:"Note created successfully", data:saveNote});
-    }catch(err){
+    }catch (err) {
         res.status(500).json({message:"Error fetching notes..", error: err});
     }
 
