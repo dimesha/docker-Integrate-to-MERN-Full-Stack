@@ -1,10 +1,17 @@
 const express = require ('express');
 const cors = require ('cors');
 const mongoose  = require ('mongoose');
+const Note  = require('./Note');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+//connect with mongoDB
+mongoose.connect('mongodb://localhost:27017/notes', {useNewUrlParser:true, useUnifiedTopology:true})
+.then(() => console.log('Connected to MongoDB.'))
+.catch(err => console.error(err));
+
 
 //create route
 app.get('/api/notes', (req, res) => {
